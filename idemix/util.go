@@ -57,7 +57,7 @@ func appendBytes(data []byte, index int, bytesToAdd []byte) int {
 }
 func appendBytesG1(data []byte, index int, E *FP256BN.ECP) int {
 	length := 2*FieldBytes + 1
-	E.ToBytes(data[index : index+length])
+	E.ToBytes(data[index : index+length], false) // 2019.06.18 vdods - had to hack this, adding `false` to get around compile error.
 	return index + length
 }
 func appendBytesG2(data []byte, index int, E *FP256BN.ECP2) int {
